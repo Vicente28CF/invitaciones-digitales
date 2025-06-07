@@ -28,27 +28,52 @@ export default function Page() {
   const statsRef = useRef<HTMLElement>(null);
   const [statsVisible, setStatsVisible] = useState(false);
 
-  const fullText = "Invitaciones que cautivan";
+  // Detect mobile device
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const fullText = "Invitaciones que cuentan historias.";
   const testimonials = [
     {
-      name: "María y Carlos",
-      event: "Boda - Marzo 2025",
+      name: "Juan Ramón",
+      event: "Boda - Noviembre 2024",
       text: "Las invitaciones superaron todas nuestras expectativas. El diseño era exactamente lo que queríamos y el servicio fue impecable.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/Perfil4.jpeg",
       rating: 5,
     },
     {
-      name: "Ana Rodríguez",
-      event: "Quinceañero - Febrero 2025",
+      name: "Patricia Dominguez",
+      event: "Cumpleaños - Febrero 2025",
       text: "¡Increíble trabajo! Mi hija quedó fascinada con el diseño. Todos los invitados preguntaron dónde habíamos hecho la invitación.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/Perfil2.jpeg",
       rating: 5,
     },
     {
-      name: "Roberto Mendoza",
-      event: "Evento Corporativo - Enero 2025",
-      text: "Profesionalismo y creatividad en cada detalle. La invitación digital elevó el nivel de nuestro evento empresarial.",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Lupita",
+      event: "Boda - Diciembre 2023",
+      text: "Profesionalismo y creatividad en cada detalle. La invitación de nuestra boda fue muy especial y elevó el nivel de nuestro evento.",
+      image: "/images/Perfil3.jpeg",
+      rating: 5,
+    },
+    {
+      name: "Daniel Santiago",
+      event: "Boda - Enero 2025",
+      text: "Quedamos completamente enamorados de nuestra invitación digital.",
+      image: "/images/Perfil5.jpeg",
+      rating: 5,
+    },
+    {
+      name: "Jessica Murillo",
+      event: "Bautizo - Enero 2025",
+      text: "Las invitaciones para el bautizo de nuestro bebé fueron absolutamente encantadoras. El diseño tierno y personalizado hizo que el evento fuera aún más especial. ¡Superaron todas nuestras expectativas!",
+      image: "/images/Perfil6.jpeg",
       rating: 5,
     },
   ];
@@ -115,7 +140,7 @@ export default function Page() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
@@ -146,6 +171,15 @@ export default function Page() {
 
     return <span>{count}</span>;
   };
+
+  const images = [
+    "/images/Invitacion_eje1.png",
+    "/images/Invitacion_eje2.png",
+    "/images/Invitacion_eje3.png",
+    "/images/Invitacion_eje4.png",
+    "/images/Invitacion_eje5.png",
+    "/images/Invitacion_eje6.png",
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-white overflow-x-hidden">
@@ -227,23 +261,16 @@ export default function Page() {
                   animationFillMode: "forwards",
                 }}
               >
-                <Button
-                  size="lg"
-                  className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full px-8 h-14 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-                >
-                  <span className="group-hover:mr-2 transition-all duration-300">
-                    Explorar diseños
-                  </span>
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-gray-200 hover:bg-gray-50 rounded-full px-8 h-14 text-lg transition-all duration-300 hover:scale-105 group"
-                >
-                  <Play className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-                  Ver demostración
-                </Button>
+                <Link href="https://vicenteygaby.my.canva.site/" passHref>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full px-8 h-14 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl group"
+                  >
+                    <Play className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
+                    Ver demostración
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -263,12 +290,11 @@ export default function Page() {
           className="w-full py-16 bg-gradient-to-r from-[#85cfa3] to-[#6bb989] text-white"
         >
           <div className="container px-4 md:px-6 mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
               {[
-                { icon: Users, label: "Clientes Felices", value: 500 },
-                { icon: Award, label: "Proyectos Completados", value: 1200 },
+                { icon: Users, label: "Clientes Felices", value: 200 },
+                { icon: Award, label: "Proyectos Completados", value: 200 },
                 { icon: Star, label: "Calificación Promedio", value: 5 },
-                { icon: Clock, label: "Años de Experiencia", value: 8 },
               ].map((stat, i) => (
                 <div
                   key={i}
@@ -276,10 +302,15 @@ export default function Page() {
                 >
                   <stat.icon className="h-8 w-8 mx-auto mb-4 group-hover:animate-bounce" />
                   <div className="text-3xl md:text-4xl font-bold mb-2">
-                    <Counter end={stat.value} />
-                    {stat.label === "Calificación Promedio" && ".0"}
-                    {stat.label === "Clientes Felices" && "+"}
-                    {stat.label === "Proyectos Completados" && "+"}
+                    {stat.label === "Calificación Promedio" ? (
+                      "5.0"
+                    ) : (
+                      <>
+                        <Counter end={stat.value} />
+                        {stat.label === "Clientes Felices" && "+"}
+                        {stat.label === "Proyectos Completados" && "+"}
+                      </>
+                    )}
                   </div>
                   <p className="text-white/90">{stat.label}</p>
                 </div>
@@ -305,19 +336,12 @@ export default function Page() {
                   impresionar y emocionar a tus invitados desde el primer
                   momento.
                 </p>
-                <Button
-                  variant="link"
-                  className="text-[#85cfa3] hover:text-[#6bb989] p-0 text-lg group flex items-center transition-all duration-300"
-                >
-                  Descubre cómo lo hacemos
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
-                </Button>
               </div>
               <div className="relative animate-on-scroll">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#85cfa3] to-[#85cfa3]/60 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
                 <div className="relative bg-gradient-to-br from-gray-900 to-black p-1 rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 group">
                   <Image
-                    src="/placeholder.svg?height=600&width=400"
+                    src="/images/InviPremium.jpeg"
                     width={400}
                     height={600}
                     alt="Invitación digital premium"
@@ -348,33 +372,21 @@ export default function Page() {
                   title: "Bodas",
                   description:
                     "Invitaciones elegantes que reflejan el romance y la sofisticación de tu día especial.",
-                  icon: "💍",
-                  features: [
-                    "Diseño personalizado",
-                    "RSVP digital",
-                    "Mapa interactivo",
-                    "Galería de fotos",
-                  ],
+                  icon: "💍", // Anillo de compromiso
                   color: "from-pink-500 to-rose-500",
                 },
                 {
-                  title: "Quinceañeros",
+                  title: "Quinceañeras",
                   description:
                     "Diseños vibrantes y modernos que capturan la esencia de esta celebración única.",
-                  icon: "✨",
-                  features: [
-                    "Animaciones exclusivas",
-                    "Música personalizada",
-                    "Cuenta regresiva",
-                    "Confirmación de asistencia",
-                  ],
+                  icon: "👑", // Corona de princesa
                   color: "from-purple-500 to-indigo-500",
                 },
                 {
                   title: "Eventos Corporativos",
                   description:
                     "Invitaciones profesionales que comunican la importancia de tu evento empresarial.",
-                  icon: "🏢",
+                  icon: "🏢", // Edificio de oficinas
                   features: [
                     "Branding corporativo",
                     "Registro de asistentes",
@@ -382,6 +394,32 @@ export default function Page() {
                     "Integración con calendario",
                   ],
                   color: "from-blue-500 to-cyan-500",
+                },
+                {
+                  title: "Cumpleaños",
+                  description:
+                    "Invitaciones alegres y personalizadas para celebrar un año más de vida con estilo.",
+                  icon: "🎉", // Confeti / fiesta
+                  features: [
+                    "Diseños coloridos",
+                    "Galería de fotos",
+                    "Cuenta regresiva",
+                    "Confirmación por WhatsApp",
+                  ],
+                  color: "from-yellow-500 to-orange-500",
+                },
+                {
+                  title: "Bautizos",
+                  description:
+                    "Invitaciones delicadas y emotivas para celebrar un momento especial en familia.",
+                  icon: "🕊️", // Paloma blanca
+                  features: [
+                    "Diseños religiosos",
+                    "Mapa interactivo",
+                    "Lista de regalos",
+                    "Confirmación de asistencia",
+                  ],
+                  color: "from-sky-400 to-teal-500",
                 },
               ].map((service, i) => (
                 <div
@@ -395,27 +433,8 @@ export default function Page() {
                     {service.title}
                   </h3>
                   <p className="text-gray-600">{service.description}</p>
-                  <ul className="space-y-3 pt-4">
-                    {service.features.map((feature, j) => (
-                      <li
-                        key={j}
-                        className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                        style={{ transitionDelay: `${j * 100}ms` }}
-                      >
-                        <CheckCircle className="h-5 w-5 text-[#85cfa3]" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="pt-4">
-                    <Button
-                      variant="ghost"
-                      className="p-0 text-[#85cfa3] hover:text-[#6bb989] hover:bg-transparent group-hover:underline flex items-center transition-all duration-300"
-                    >
-                      Explorar {service.title.toLowerCase()}
-                      <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </Button>
-                  </div>
+                  <ul className="space-y-3 pt-4"></ul>
+                  <div className="pt-4"></div>
                 </div>
               ))}
             </div>
@@ -423,7 +442,7 @@ export default function Page() {
         </section>
 
         {/* Interactive Gallery */}
-        <section id="galeria" className="w-full py-24 md:py-32 bg-gray-50">
+        <section id="galería" className="w-full py-24 md:py-32 bg-gray-50">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center text-center space-y-4 mb-20 animate-on-scroll">
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
@@ -435,49 +454,46 @@ export default function Page() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-black animate-on-scroll hover:scale-105 transition-all duration-500 cursor-pointer"
-                >
-                  <Image
-                    src={`/placeholder.svg?height=600&width=450`}
-                    width={450}
-                    height={600}
-                    alt={`Diseño de invitación ${i + 1}`}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <h3 className="text-xl font-semibold text-white mb-2">
-                        Diseño Colección {i + 1}
-                      </h3>
-                      <p className="text-white/80 mb-4">
-                        Invitación digital premium
-                      </p>
-                      <Button
-                        size="sm"
-                        className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full"
-                      >
-                        Ver detalles
-                      </Button>
+              {[
+                images.map((img, i) => (
+                  <div
+                    key={i}
+                    className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-black animate-on-scroll hover:scale-105 transition-all duration-500 cursor-pointer"
+                  >
+                    <Image
+                      src={img}
+                      width={450}
+                      height={600}
+                      alt={`Diseño de invitación ${i + 1}`}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 className="text-xl font-semibold text-white mb-2">
+                          Diseño Colección {i + 1}
+                        </h3>
+                        <p className="text-white/80 mb-4">
+                          Invitación digital premium
+                        </p>
+                        <Button
+                          size="sm"
+                          className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full"
+                        >
+                          Ver detalles
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                        <ArrowUpRight className="h-4 w-4 text-white" />
+                      </div>
                     </div>
                   </div>
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                      <ArrowUpRight className="h-4 w-4 text-white" />
-                    </div>
-                  </div>
-                </div>
-              ))}
+                )),
+              ]}
             </div>
 
-            <div className="flex justify-center mt-16 animate-on-scroll">
-              <Button className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full px-8 h-12 group hover:scale-105 transition-all duration-300">
-                Ver todos los diseños
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </div>
+            <div className="flex justify-center mt-16 animate-on-scroll"></div>
           </div>
         </section>
 
@@ -572,48 +588,60 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Esencial",
-                  price: "$25",
+                  name: "Paquete Basico",
+                  price: "$800",
                   description: "Perfecto para eventos pequeños",
                   features: [
                     "1 diseño personalizado",
-                    "2 revisiones incluidas",
-                    "Entrega en 48h",
+                    "Datos del Evento",
+                    "Elementos Graficos Basicos",
                     "Formato digital",
+                    "Entrega en 3 días habiles",
                   ],
                   highlighted: false,
                 },
                 {
-                  name: "Premium",
-                  price: "$45",
+                  name: "Paquete Premium",
+                  price: "$1200",
                   description: "Ideal para eventos especiales",
                   features: [
-                    "1 diseño personalizado",
-                    "Revisiones ilimitadas",
-                    "Entrega en 24h",
+                    "Diseño 100% personalizado (colores, tematica, tipografía)",
+                    "Invitación Digital",
+                    "Mapa de Ubicación (enlace directo a Google Maps)",
+                    "Musica de fondo",
+                    "Datos del evento",
                     "Animaciones incluidas",
-                    "RSVP integrado",
+                    "Galeria de 4 fotos",
+                    "2 revisiones",
+                    "Entrega en 4 dias habiles",
                   ],
                   highlighted: true,
                 },
                 {
-                  name: "Exclusivo",
-                  price: "$75",
+                  name: "Paquete VIP",
+                  price: "$1800",
                   description: "Para eventos únicos e inolvidables",
                   features: [
-                    "2 diseños personalizados",
-                    "Revisiones ilimitadas",
-                    "Entrega en 12h",
+                    "Diseño exclusivo totalmente personalizado",
+                    "Invitación digital",
+                    "Galeria de fotos ilimitada",
+                    "video clip corto, OPCIONAL",
                     "Animaciones premium",
-                    "Música personalizada",
-                    "Soporte 24/7",
+                    "Mapa con ubicaciones interactiva",
+                    "Cuenta regresiva al evento",
+                    "Confirmación de asistencia",
+                    "Musica de fondo personalizada",
+                    "Revisiones ilimitadas",
+                    "Entrega en 5 días hábiles",
                   ],
                   highlighted: false,
                 },
               ].map((plan, i) => (
                 <div
                   key={i}
-                  className={`rounded-3xl p-8 flex flex-col h-full transition-all duration-500 hover:scale-105 animate-on-scroll group cursor-pointer ${
+                  className={`rounded-3xl p-6 md:p-8 flex flex-col h-full transition-all duration-500 ${
+                    !isMobile && "hover:scale-105"
+                  } animate-on-scroll group cursor-pointer ${
                     plan.highlighted
                       ? "bg-[#85cfa3] text-black relative overflow-hidden hover:shadow-2xl hover:shadow-[#85cfa3]/50"
                       : "bg-gray-900 hover:bg-gray-800 hover:shadow-2xl"
@@ -627,12 +655,12 @@ export default function Page() {
                       <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-20 animate-ping"></div>
                     </>
                   )}
-                  <div className="mb-8">
+                  <div className="mb-6 md:mb-8">
                     <h3 className="text-2xl font-bold mb-2 group-hover:scale-105 transition-transform duration-300">
                       {plan.name}
                     </h3>
                     <div className="flex items-baseline">
-                      <span className="text-4xl font-bold group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-3xl md:text-4xl font-bold group-hover:scale-110 transition-transform duration-300">
                         {plan.price}
                       </span>
                       <span
@@ -640,7 +668,7 @@ export default function Page() {
                           plan.highlighted ? "text-black/70" : "text-gray-400"
                         }`}
                       >
-                        USD
+                        MXN
                       </span>
                     </div>
                     <p
@@ -651,12 +679,16 @@ export default function Page() {
                       {plan.description}
                     </p>
                   </div>
-                  <ul className="space-y-4 mb-8 flex-1">
+                  <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8 flex-1">
                     {plan.features.map((feature, j) => (
                       <li
                         key={j}
-                        className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                        style={{ transitionDelay: `${j * 100}ms` }}
+                        className={`flex items-center gap-3 ${
+                          isMobile
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
+                        } transition-all duration-300`}
+                        style={{ transitionDelay: `${j * 50}ms` }}
                       >
                         <CheckCircle
                           className={`h-5 w-5 ${
@@ -668,7 +700,9 @@ export default function Page() {
                     ))}
                   </ul>
                   <Button
-                    className={`rounded-full px-8 h-12 mt-auto transition-all duration-300 hover:scale-105 ${
+                    className={`rounded-full px-6 md:px-8 h-12 mt-auto transition-all duration-300 ${
+                      !isMobile && "hover:scale-105"
+                    } ${
                       plan.highlighted
                         ? "bg-black text-white hover:bg-gray-800 hover:shadow-lg"
                         : "bg-[#85cfa3] text-black hover:bg-[#6bb989] hover:shadow-lg hover:shadow-[#85cfa3]/50"
@@ -688,31 +722,32 @@ export default function Page() {
           <div className="container px-4 md:px-6 mx-auto relative z-10">
             <div className="flex flex-col items-center text-center space-y-8 max-w-3xl mx-auto animate-on-scroll">
               <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-                Crea invitaciones que dejarán huella
+                Tu evento Comienza aquí...
               </h2>
-              <p className="text-xl text-gray-600">
+              {/* <p className="text-xl text-gray-600">
                 Comienza hoy y transforma tus eventos en experiencias
-                inolvidables
-              </p>
-              <div className="w-full max-w-md space-y-4 pt-4">
-                <form className="flex flex-col sm:flex-row gap-3 group">
-                  <Input
-                    type="email"
-                    placeholder="Tu email"
-                    className="h-14 rounded-full border-gray-200 bg-white transition-all duration-300 focus:scale-105 focus:shadow-lg"
-                  />
-                  <Button
-                    type="submit"
-                    className="h-14 rounded-full bg-black text-white hover:bg-gray-800 px-8 transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-                  >
-                    <span className="group-hover:mr-2 transition-all duration-300">
-                      Comenzar
-                    </span>
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </form>
+                inolvidables.
+              </p> */}
+
+              {/* Mensaje de contacto */}
+              <div className="mt-6 text-center space-y-4">
+                <p className="text-lg text-gray-700">
+                  ¿Te interesa una invitación digital personalizada?
+                </p>
+                <p className="text-lg font-semibold text-black">
+                  Contáctanos por WhatsApp y recibe atención inmediata.
+                </p>
+                <a
+                  href="https://wa.me/3332229246" // 👈 Reemplaza con tu número real
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center bg-[#85cfa3] hover:bg-[#6bb989] text-white px-6 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                >
+                  Escríbenos por WhatsApp
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
                 <p className="text-sm text-gray-500 animate-pulse">
-                  Te contactaremos en menos de 2 horas
+                  Respondemos en menos de 2 horas
                 </p>
               </div>
             </div>
@@ -730,7 +765,9 @@ export default function Page() {
             <div className="space-y-4 animate-on-scroll">
               <div className="flex items-center group">
                 <Sparkles className="h-6 w-6 text-[#85cfa3] transition-transform group-hover:rotate-12" />
-                <span className="ml-2 text-xl font-medium">InvitaDigital</span>
+                <span className="ml-2 text-xl font-medium">
+                  Invitaciones Digitales
+                </span>
               </div>
               <p className="text-gray-600">
                 Creando invitaciones digitales excepcionales para momentos
@@ -751,19 +788,12 @@ export default function Page() {
               {
                 title: "Empresa",
                 links: [
-                  "Sobre Nosotros",
-                  "Blog",
-                  "Testimonios",
-                  "Preguntas Frecuentes",
+                  "Transformamos tus momentos especiales en experiencias digitales inolvidables. Somos más que una simple plataforma de invitaciones; somos artesanos digitales que combinan diseño, tecnología y emoción para crear piezas únicas que reflejen la esencia de tu evento.",
                 ],
               },
               {
                 title: "Contacto",
-                links: [
-                  "info@invitadigital.com",
-                  "+52 123 456 7890",
-                  "@invitadigital",
-                ],
+                links: ["+52 333-222-9246"],
               },
             ].map((section, i) => (
               <div key={i} className="animate-on-scroll">
@@ -786,7 +816,7 @@ export default function Page() {
 
           <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center animate-on-scroll">
             <p className="text-gray-600 text-sm">
-              © 2025 InvitaDigital. Todos los derechos reservados.
+              © 2025. Todos los derechos reservados.
             </p>
             <div className="flex gap-6 mt-4 md:mt-0">
               {["Términos", "Privacidad", "Cookies"].map((item) => (
@@ -829,6 +859,12 @@ export default function Page() {
           opacity: 1;
           transform: translateY(0);
         }
+        
+        /* Mejorar rendimiento de animaciones en móviles */
+        @media (max-width: 768px) {
+          .animate-pulse, .animate-bounce {
+            animation-duration: 1.5s;
+          }
 
         html {
           scroll-behavior: smooth;
