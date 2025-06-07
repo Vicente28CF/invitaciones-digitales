@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Sparkles,
   ArrowRight,
@@ -12,14 +11,12 @@ import {
   Star,
   Users,
   Award,
-  Clock,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
 export default function Page() {
-  const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -88,7 +85,7 @@ export default function Page() {
     } else if (typedText.length === fullText.length) {
       setIsTyping(false);
     }
-  }, [typedText, isTyping]);
+  }, [typedText, isTyping, fullText.length]);
 
   // Mouse tracking effect
   useEffect(() => {
@@ -142,7 +139,7 @@ export default function Page() {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
 
   // Counter component
   const Counter = ({
@@ -372,21 +369,21 @@ export default function Page() {
                   title: "Bodas",
                   description:
                     "Invitaciones elegantes que reflejan el romance y la sofisticación de tu día especial.",
-                  icon: "💍", // Anillo de compromiso
+                  icon: "💍",
                   color: "from-pink-500 to-rose-500",
                 },
                 {
                   title: "Quinceañeras",
                   description:
                     "Diseños vibrantes y modernos que capturan la esencia de esta celebración única.",
-                  icon: "👑", // Corona de princesa
+                  icon: "👑",
                   color: "from-purple-500 to-indigo-500",
                 },
                 {
                   title: "Eventos Corporativos",
                   description:
                     "Invitaciones profesionales que comunican la importancia de tu evento empresarial.",
-                  icon: "🏢", // Edificio de oficinas
+                  icon: "🏢",
                   features: [
                     "Branding corporativo",
                     "Registro de asistentes",
@@ -399,7 +396,7 @@ export default function Page() {
                   title: "Cumpleaños",
                   description:
                     "Invitaciones alegres y personalizadas para celebrar un año más de vida con estilo.",
-                  icon: "🎉", // Confeti / fiesta
+                  icon: "🎉",
                   features: [
                     "Diseños coloridos",
                     "Galería de fotos",
@@ -412,7 +409,7 @@ export default function Page() {
                   title: "Bautizos",
                   description:
                     "Invitaciones delicadas y emotivas para celebrar un momento especial en familia.",
-                  icon: "🕊️", // Paloma blanca
+                  icon: "🕊️",
                   features: [
                     "Diseños religiosos",
                     "Mapa interactivo",
@@ -454,43 +451,41 @@ export default function Page() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                images.map((img, i) => (
-                  <div
-                    key={i}
-                    className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-black animate-on-scroll hover:scale-105 transition-all duration-500 cursor-pointer"
-                  >
-                    <Image
-                      src={img}
-                      width={450}
-                      height={600}
-                      alt={`Diseño de invitación ${i + 1}`}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                      <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          Diseño Colección {i + 1}
-                        </h3>
-                        <p className="text-white/80 mb-4">
-                          Invitación digital premium
-                        </p>
-                        <Button
-                          size="sm"
-                          className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full"
-                        >
-                          Ver detalles
-                        </Button>
-                      </div>
-                    </div>
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <ArrowUpRight className="h-4 w-4 text-white" />
-                      </div>
+              {images.map((img, i) => (
+                <div
+                  key={i}
+                  className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-black animate-on-scroll hover:scale-105 transition-all duration-500 cursor-pointer"
+                >
+                  <Image
+                    src={img}
+                    width={450}
+                    height={600}
+                    alt={`Diseño de invitación ${i + 1}`}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        Diseño Colección {i + 1}
+                      </h3>
+                      <p className="text-white/80 mb-4">
+                        Invitación digital premium
+                      </p>
+                      <Button
+                        size="sm"
+                        className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full"
+                      >
+                        Ver detalles
+                      </Button>
                     </div>
                   </div>
-                )),
-              ]}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                      <ArrowUpRight className="h-4 w-4 text-white" />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="flex justify-center mt-16 animate-on-scroll"></div>
@@ -538,7 +533,7 @@ export default function Page() {
                       )}
                     </div>
                     <p className="text-2xl md:text-3xl font-light italic text-gray-700 transition-all duration-500">
-                      "{testimonials[currentTestimonial].text}"
+                      &quot;{testimonials[currentTestimonial].text}&quot;
                     </p>
                     <div>
                       <p className="text-lg font-semibold">
@@ -724,10 +719,6 @@ export default function Page() {
               <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
                 Tu evento Comienza aquí...
               </h2>
-              {/* <p className="text-xl text-gray-600">
-                Comienza hoy y transforma tus eventos en experiencias
-                inolvidables.
-              </p> */}
 
               {/* Mensaje de contacto */}
               <div className="mt-6 text-center space-y-4">
@@ -738,7 +729,7 @@ export default function Page() {
                   Contáctanos por WhatsApp y recibe atención inmediata.
                 </p>
                 <a
-                  href="https://wa.me/3332229246" // 👈 Reemplaza con tu número real
+                  href="https://wa.me/3332229246"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-[#85cfa3] hover:bg-[#6bb989] text-white px-6 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg"
@@ -859,12 +850,14 @@ export default function Page() {
           opacity: 1;
           transform: translateY(0);
         }
-        
+
         /* Mejorar rendimiento de animaciones en móviles */
         @media (max-width: 768px) {
-          .animate-pulse, .animate-bounce {
+          .animate-pulse,
+          .animate-bounce {
             animation-duration: 1.5s;
           }
+        }
 
         html {
           scroll-behavior: smooth;
