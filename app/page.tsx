@@ -66,13 +66,13 @@ export default function Page() {
       image: "/images/Perfil5.jpeg",
       rating: 5,
     },
-    {
-      name: "Jessica Murillo",
-      event: "Bautizo - Enero 2025",
-      text: "Las invitaciones para el bautizo de nuestro bebé fueron absolutamente encantadoras. El diseño tierno y personalizado hizo que el evento fuera aún más especial. ¡Superaron todas nuestras expectativas!",
-      image: "/images/Perfil6.jpeg",
-      rating: 5,
-    },
+    // {
+    //   name: "Jessica Murillo",
+    //   event: "Bautizo - Enero 2025",
+    //   text: "Las invitaciones para el bautizo de nuestro bebé fueron absolutamente encantadoras. El diseño tierno y personalizado hizo que el evento fuera aún más especial. ¡Superaron todas nuestras expectativas!",
+    //   image: "/images/Perfil6.jpeg",
+    //   rating: 5,
+    // },
   ];
 
   // Typing animation effect
