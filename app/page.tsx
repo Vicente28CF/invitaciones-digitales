@@ -729,7 +729,7 @@ export default function Page() {
                   Contáctanos por WhatsApp y recibe atención inmediata.
                 </p>
                 <a
-                  href="https://wa.me/3332229246"
+                  href="https://wa.me/3321916387"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-[#85cfa3] hover:bg-[#6bb989] text-white px-6 py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg"
@@ -784,7 +784,7 @@ export default function Page() {
               },
               {
                 title: "Contacto",
-                links: ["+52 333-222-9246"],
+                links: ["+52 332-1916-387"],
               },
             ].map((section, i) => (
               <div key={i} className="animate-on-scroll">
