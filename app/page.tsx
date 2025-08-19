@@ -244,7 +244,7 @@ export default function Page() {
                   animationFillMode: "forwards",
                 }}
               >
-                <Link href="https://vicenteygaby.my.canva.site/" passHref>
+                <Link href="##" passHref>
                   <Button
                     variant="outline"
                     size="lg"
