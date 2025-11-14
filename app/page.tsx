@@ -309,7 +309,7 @@ export default function Page() {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center text-center space-y-4 mb-20 animate-on-scroll">
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                Planes diseñados para ti, Bodas y XV Años
+                Planes diseñados para ti, Bodas y XV Años (Pagina Web).
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl">Soluciones para cada necesidad y presupuesto</p>
             </div>
@@ -433,7 +433,7 @@ export default function Page() {
         <section className="w-full py-24 md:py-32 bg-gradient-to-br from-[#85cfa3] to-[#6bb989] text-white">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center text-center space-y-4 mb-20 animate-on-scroll">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Planes Especiales</h2>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Planes Especiales (VIDEOS).</h2>
               <p className="text-xl text-white/90 max-w-3xl">
                 Cumpleaños • Baby Shower • Revelación de Género • Bautizo
               </p>
