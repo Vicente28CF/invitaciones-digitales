@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Sparkles, ArrowRight, ChevronDown, Play, CheckCircle, ArrowUpRight, Star, Users, Award } from "lucide-react"
+import { Sparkles, ArrowRight, ChevronDown, CheckCircle, ArrowUpRight, Star, Users, Award } from 'lucide-react'
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
@@ -56,13 +56,6 @@ export default function Page() {
       image: "/images/Perfil5.jpeg",
       rating: 5,
     },
-    // {
-    //   name: "Jessica Murillo",
-    //   event: "Bautizo - Enero 2025",
-    //   text: "Las invitaciones para el bautizo de nuestro bebé fueron absolutamente encantadoras. El diseño tierno y personalizado hizo que el evento fuera aún más especial. ¡Superaron todas nuestras expectativas!",
-    //   image: "/images/Perfil6.jpeg",
-    //   rating: 5,
-    // },
   ]
 
   // Typing animation effect
@@ -237,24 +230,6 @@ export default function Page() {
               >
                 Diseños digitales que transforman momentos especiales en experiencias inolvidables
               </p>
-              <div
-                className="flex flex-col sm:flex-row gap-4 pt-8 opacity-0 animate-fade-in-up"
-                style={{
-                  animationDelay: "1.5s",
-                  animationFillMode: "forwards",
-                }}
-              >
-                <Link href="##" passHref>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full px-8 h-14 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-                  >
-                    <Play className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
-                    Ver demostración
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -328,179 +303,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Servicios with hover effects */}
-        <section id="servicios" className="w-full py-24 md:py-32 bg-white">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="flex flex-col items-center text-center space-y-4 mb-20 animate-on-scroll">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Servicios exclusivos</h2>
-              <p className="text-xl text-gray-600 max-w-2xl">Soluciones digitales para cada momento especial</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {[
-                {
-                  title: "Bodas",
-                  description: "Invitaciones elegantes que reflejan el romance y la sofisticación de tu día especial.",
-                  icon: "💍",
-                  color: "from-pink-500 to-rose-500",
-                },
-                {
-                  title: "Quinceañeras",
-                  description: "Diseños vibrantes y modernos que capturan la esencia de esta celebración única.",
-                  icon: "👑",
-                  color: "from-purple-500 to-indigo-500",
-                },
-                {
-                  title: "Eventos Corporativos",
-                  description: "Invitaciones profesionales que comunican la importancia de tu evento empresarial.",
-                  icon: "🏢",
-                  features: [
-                    "Branding corporativo",
-                    "Registro de asistentes",
-                    "Agenda interactiva",
-                    "Integración con calendario",
-                  ],
-                  color: "from-blue-500 to-cyan-500",
-                },
-                {
-                  title: "Cumpleaños",
-                  description: "Invitaciones alegres y personalizadas para celebrar un año más de vida con estilo.",
-                  icon: "🎉",
-                  features: ["Diseños coloridos", "Galería de fotos", "Cuenta regresiva", "Confirmación por WhatsApp"],
-                  color: "from-yellow-500 to-orange-500",
-                },
-                {
-                  title: "Bautizos",
-                  description: "Invitaciones delicadas y emotivas para celebrar un momento especial en familia.",
-                  icon: "🕊️",
-                  features: [
-                    "Diseños religiosos",
-                    "Mapa interactivo",
-                    "Lista de regalos",
-                    "Confirmación de asistencia",
-                  ],
-                  color: "from-sky-400 to-teal-500",
-                },
-              ].map((service, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col space-y-6 group animate-on-scroll hover:scale-105 transition-all duration-500 p-6 rounded-2xl hover:shadow-2xl hover:bg-gradient-to-br hover:from-gray-50 hover:to-white"
-                >
-                  <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
-                  <h3 className="text-2xl font-semibold group-hover:text-[#85cfa3] transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600">{service.description}</p>
-                  <ul className="space-y-3 pt-4"></ul>
-                  <div className="pt-4"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Interactive Gallery */}
-        <section id="galería" className="w-full py-24 md:py-32 bg-gray-50">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="flex flex-col items-center text-center space-y-4 mb-20 animate-on-scroll">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Galería de diseños</h2>
-              <p className="text-xl text-gray-600 max-w-2xl">Explora nuestra colección de invitaciones digitales</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {images.map((img, i) => (
-                <div
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-black animate-on-scroll hover:scale-105 transition-all duration-500 cursor-pointer"
-                >
-                  <Image
-                    src={img || "/placeholder.svg"}
-                    width={450}
-                    height={600}
-                    alt={`Diseño de invitación ${i + 1}`}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <h3 className="text-xl font-semibold text-white mb-2">Diseño Colección {i + 1}</h3>
-                      <p className="text-white/80 mb-4">Invitación digital premium</p>
-                      <Button size="sm" className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full">
-                        Ver detalles
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                      <ArrowUpRight className="h-4 w-4 text-white" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center mt-16 animate-on-scroll"></div>
-          </div>
-        </section>
-
-        {/* Interactive Testimonial Carousel */}
-        <section className="w-full py-24 md:py-32 bg-white overflow-hidden">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="flex flex-col items-center text-center space-y-4 mb-16 animate-on-scroll">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Lo que dicen nuestros clientes</h2>
-            </div>
-
-            <div className="relative max-w-6xl mx-auto">
-              <div className="absolute -inset-4 bg-[#85cfa3]/10 rounded-3xl blur-3xl animate-pulse"></div>
-              <div className="relative bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                  <div className="lg:col-span-1">
-                    <div className="relative group">
-                      <Image
-                        src={testimonials[currentTestimonial].image || "/placeholder.svg" || "/placeholder.svg"}
-                        width={400}
-                        height={400}
-                        alt="Cliente satisfecho"
-                        className="w-full h-auto rounded-2xl transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#85cfa3]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-                    </div>
-                  </div>
-                  <div className="lg:col-span-2 space-y-6">
-                    <div className="flex gap-1">
-                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-6 w-6 text-yellow-400 fill-current animate-pulse"
-                          style={{ animationDelay: `${i * 100}ms` }}
-                        />
-                      ))}
-                    </div>
-                    <p className="text-2xl md:text-3xl font-light italic text-gray-700 transition-all duration-500">
-                      &quot;{testimonials[currentTestimonial].text}&quot;
-                    </p>
-                    <div>
-                      <p className="text-lg font-semibold">{testimonials[currentTestimonial].name}</p>
-                      <p className="text-gray-600">{testimonials[currentTestimonial].event}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimonial indicators */}
-                <div className="flex justify-center mt-8 gap-2">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentTestimonial(i)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        i === currentTestimonial ? "bg-[#85cfa3] scale-125" : "bg-gray-300 hover:bg-gray-400"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Interactive Pricing */}
         <section id="precios" className="w-full py-24 md:py-32 bg-black text-white">
@@ -516,7 +318,7 @@ export default function Page() {
               {[
                 {
                   name: "Paquete Basico",
-                  price: "$800",
+                  price: "$700",
                   description: "Perfecto para eventos pequeños",
                   features: [
                     "1 diseño personalizado",
@@ -524,12 +326,14 @@ export default function Page() {
                     "Elementos Graficos Basicos",
                     "Formato digital",
                     "Entrega en 3 días habiles",
+                    "Galeria de Dos fotos",
+                    "Musica de Fondo",
                   ],
                   highlighted: false,
                 },
                 {
                   name: "Paquete Premium",
-                  price: "$1200",
+                  price: "$850",
                   description: "Ideal para eventos especiales",
                   features: [
                     "Diseño 100% personalizado (colores, tematica, tipografía)",
@@ -546,7 +350,7 @@ export default function Page() {
                 },
                 {
                   name: "Paquete VIP",
-                  price: "$1800",
+                  price: "$1000",
                   description: "Para eventos únicos e inolvidables",
                   features: [
                     "Diseño exclusivo totalmente personalizado",
@@ -708,6 +512,109 @@ export default function Page() {
                 <p className="mt-6 text-white/90">
                   Todos nuestros planes especiales incluyen diseños temáticos personalizados para cada tipo de evento
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Gallery */}
+        <section id="galería" className="w-full py-24 md:py-32 bg-gray-50">
+          <div className="container px-4 md:px-6 mx-auto">
+            <div className="flex flex-col items-center text-center space-y-4 mb-20 animate-on-scroll">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Galería de diseños</h2>
+              <p className="text-xl text-gray-600 max-w-2xl">Explora nuestra colección de invitaciones digitales</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {images.map((img, i) => (
+                <div
+                  key={i}
+                  className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-black animate-on-scroll hover:scale-105 transition-all duration-500 cursor-pointer"
+                >
+                  <Image
+                    src={img || "/placeholder.svg"}
+                    width={450}
+                    height={600}
+                    alt={`Diseño de invitación ${i + 1}`}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="absolute bottom-6 left-6 right-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="text-xl font-semibold text-white mb-2">Diseño Colección {i + 1}</h3>
+                      <p className="text-white/80 mb-4">Invitación digital premium</p>
+                      <Button size="sm" className="bg-[#85cfa3] hover:bg-[#6bb989] text-white rounded-full">
+                        Ver detalles
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                      <ArrowUpRight className="h-4 w-4 text-white" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-16 animate-on-scroll"></div>
+          </div>
+        </section>
+
+        {/* Interactive Testimonial Carousel */}
+        <section className="w-full py-24 md:py-32 bg-white overflow-hidden">
+          <div className="container px-4 md:px-6 mx-auto">
+            <div className="flex flex-col items-center text-center space-y-4 mb-16 animate-on-scroll">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Lo que dicen nuestros clientes</h2>
+            </div>
+
+            <div className="relative max-w-6xl mx-auto">
+              <div className="absolute -inset-4 bg-[#85cfa3]/10 rounded-3xl blur-3xl animate-pulse"></div>
+              <div className="relative bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xl">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                  <div className="lg:col-span-1">
+                    <div className="relative group">
+                      <Image
+                        src={testimonials[currentTestimonial].image || "/placeholder.svg" || "/placeholder.svg"}
+                        width={400}
+                        height={400}
+                        alt="Cliente satisfecho"
+                        className="w-full h-auto rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#85cfa3]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                    </div>
+                  </div>
+                  <div className="lg:col-span-2 space-y-6">
+                    <div className="flex gap-1">
+                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-6 w-6 text-yellow-400 fill-current animate-pulse"
+                          style={{ animationDelay: `${i * 100}ms` }}
+                        />
+                      ))}
+                    </div>
+                    <p className="text-2xl md:text-3xl font-light italic text-gray-700 transition-all duration-500">
+                      &quot;{testimonials[currentTestimonial].text}&quot;
+                    </p>
+                    <div>
+                      <p className="text-lg font-semibold">{testimonials[currentTestimonial].name}</p>
+                      <p className="text-gray-600">{testimonials[currentTestimonial].event}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Testimonial indicators */}
+                <div className="flex justify-center mt-8 gap-2">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentTestimonial(i)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        i === currentTestimonial ? "bg-[#85cfa3] scale-125" : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
