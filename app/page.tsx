@@ -153,10 +153,8 @@ export default function Page() {
   }
 
   const images = [
-    "/images/Invitacion_eje1.png",
     "/images/Invitacion_eje2.png",
     "/images/Invitacion_eje3.png",
-    "/images/Invitacion_eje4.png",
     "/images/Invitacion_eje5.png",
     "/images/Invitacion_eje6.png",
   ]
