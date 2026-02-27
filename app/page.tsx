@@ -316,7 +316,7 @@ export default function Page() {
               {[
                 {
                   name: "Paquete Basico",
-                  price: "$700",
+                  price: "$500",
                   description: "Perfecto para eventos pequeños",
                   features: [
                     "1 diseño personalizado",
@@ -331,7 +331,7 @@ export default function Page() {
                 },
                 {
                   name: "Paquete Premium",
-                  price: "$850",
+                  price: "$650",
                   description: "Ideal para eventos especiales",
                   features: [
                     "Diseño 100% personalizado (colores, tematica, tipografía)",
@@ -348,7 +348,7 @@ export default function Page() {
                 },
                 {
                   name: "Paquete VIP",
-                  price: "$1000",
+                  price: "$850",
                   description: "Para eventos únicos e inolvidables",
                   features: [
                     "Diseño exclusivo totalmente personalizado",
