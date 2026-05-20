@@ -107,12 +107,17 @@ export default function Page() {
   ]
 
   const galleryImages = [
+    { src: "/images/boda_1.jpeg", category: "bodas", title: "Boda Elegante" },
+    { src: "/images/boda_2.jpeg", category: "bodas", title: "Boda Moderna" },
+    { src: "/images/boda_3.jpeg", category: "bodas", title: "Boda Clásica" },
+    { src: "/images/XV_1.jpeg", category: "xv", title: "XV Años dorado" },
+    { src: "/images/XV_2.jpeg", category: "xv", title: "XV Años rosa" },
+    { src: "/images/XV_3.jpeg", category: "xv", title: "XV Años elegante" },
     { src: "/images/Invitacion_eje2.png", category: "bodas", title: "Eterno Amor" },
     { src: "/images/Invitacion_eje3.png", category: "xv", title: "XV Años Magia" },
     { src: "/images/Invitacion_eje5.png", category: "bodas", title: "Jardín de Rosas" },
     { src: "/images/Invitacion_eje6.png", category: "especiales", title: "Dulce Espera" },
     { src: "/images/Invitacion_eje1.png", category: "xv", title: "Princesa Real" },
-    { src: "/images/InviPremium.jpeg", category: "bodas", title: "Premium Collection" },
   ]
 
   const categories = [
@@ -474,6 +479,16 @@ export default function Page() {
                       Ver Galería
                     </Link>
                   </Button>
+
+                  <Button
+                    variant="outline"
+                    asChild
+                    className="btn-secondary"
+                  >
+                    <a href="https://www.tiktok.com/@gaby.invitaciones?_r=1&_t=ZS-96WkUfpUJTL" target="_blank" rel="noopener noreferrer">
+                      Videos
+                    </a>
+                  </Button>
                 </div>
 
                 {/* Stats row */}
@@ -500,7 +515,7 @@ export default function Page() {
 
                 <div className="relative bg-[var(--color-surface)] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500">
                   <Image
-                    src="/images/InviPremium.jpeg"
+                    src="/images/boda_1.jpeg"
                     width={500}
                     height={650}
                     alt="Invitación digital premium"
