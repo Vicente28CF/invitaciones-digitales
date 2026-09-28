@@ -687,7 +687,7 @@ export default function Page() {
                 },
                 {
                   name: "Premium",
-                  price: "$650",
+                  price: "$600",
                   description: "Ideal para eventos especiales",
                   features: [
                     "Diseño 100% personalizado",
@@ -702,7 +702,7 @@ export default function Page() {
                 },
                 {
                   name: "VIP",
-                  price: "$850",
+                  price: "$750",
                   description: "Para eventos únicos e inolvidables",
                   features: [
                     "Diseño exclusivo totalmente personalizado",
